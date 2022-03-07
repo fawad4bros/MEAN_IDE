@@ -1,0 +1,104 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <nb-card>
+              <nb-card-header>Ace Editor
+                <nb-select [(selected)]="theme" (selectedChange)="changeTheme()" placeholder="Select Theme" style="float: right;
+">
+                  <nb-option value="twilight">Twilight</nb-option>
+                  <nb-option value="tomorrow_night_blue">Nightblue</nb-option>
+                  <nb-option value="chrome">Chrome</nb-option>
+                  <nb-option value="dawn">Dawn</nb-option>
+                  <nb-option value="ambiance">Ambiance</nb-option>
+                  <nb-option value="clouds_midnight">Midnight</nb-option>
+                  <nb-option value="terminal">Terminal</nb-option>
+                </nb-select>
+              </nb-card-header>
+              <nb-card-body>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div
+                      class="app-ace-editor"
+                      #editor
+                      style="height: 500px"
+                    ></div>
+                  </div>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="col-md-4">
+                    <nb-select
+                      [(selected)]="language"
+                      (selectedChange)="changeLanguage()"
+                      placeholder="Select Language"
+                    >
+                      <nb-option value="javascript">JavaScript</nb-option>
+                      <nb-option value="python">Python</nb-option>
+                    </nb-select>
+                  </div>
+                  <div class="col-md-4" >
+                    <button
+                    (click)="onRun()"
+                    style="margin-bottom: 20px"
+                    type="button"
+                    class="btn btn-success"
+                    style="float: right; margin-top: 1px;
+">Run  <nb-icon icon="play-circle-outline"></nb-icon></button>
+                  </div>
+
+                  <div class="col-md-4">
+                    <button
+                    (click)="onSubmit"
+                    style="margin-bottom: 20px"
+                    type="button"
+                    class="btn btn-success"
+                    style="float: right; margin-top: 1px;
+">Submit  <nb-icon icon="cloud-upload-outline"></nb-icon></button>
+                  </div>
+                </div>
+              </nb-card-body>
+            </nb-card>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <nb-card status="primary">
+              <nb-card-header>Input</nb-card-header>
+              <nb-card-body>
+                <textarea
+                  status="info"
+                  nbInput
+                  fullWidth
+                  placeholder="Enter stdin"
+                  [(ngModel)]="stdInput"
+                ></textarea>
+              </nb-card-body>
+            </nb-card>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="container">
+        <nb-card status="success">
+          <nb-card-header>Output</nb-card-header>
+          <nb-card-body>
+            <pre>{{ stdout }}</pre>
+          </nb-card-body>
+        </nb-card>
+
+        <nb-card status="danger">
+          <nb-card-header>Error</nb-card-header>
+          <nb-card-body>
+            <pre>{{ stderr }}</pre>
+          </nb-card-body>
+        </nb-card>
+      </div>
+    </div>
+  </div>
+</div>
